@@ -102,9 +102,7 @@ export default function RoomPage() {
       const videoTrack = stream.getVideoTracks()[0];
       
       if (videoTrack) {
-        // 현재 상태의 반대로 뒤집습니다. (true -> false, false -> true)
         videoTrack.enabled = !videoTrack.enabled;
-        // 버튼 모양을 바꾸기 위해 State도 업데이트해 줍니다.
         setIsVideoOn(videoTrack.enabled);
       }
     }
