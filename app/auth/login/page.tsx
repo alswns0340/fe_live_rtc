@@ -42,9 +42,22 @@ export default function LoginPage() {
         alert('알 수 없는 오류가 발생했습니다.');
       }}
   };
+  const handlePingTest = async () => {
+    try {
+      // ✨ 단순히 GET으로 찔러보기만 합니다.
+      const response = await axios.get('http://localhost:4000/ping');
+      alert('🟢 통신 대성공! 서버 응답: ' + response.data.message);
+    } catch (error) {
+      console.error('🔴 핑 테스트 에러:', error);
+      alert('통신 실패 (콘솔 확인)');
+    }
+  };
 
   return (
     <div style={{ padding: '50px', maxWidth: '400px', margin: '0 auto', textAlign: 'center' }}>
+      <button onClick={handlePingTest} type="button">
+    초간단 통신 테스트 (Ping)
+  </button>
       <h2>🔐 WebRTC 로그인 (최신 방식)</h2>
       
       {/* ✨ 3. onSubmit 대신 action 속성에 함수를 바로 넣습니다. 새로고침 방지(preventDefault)를 알아서 해줍니다! */}
